@@ -1,5 +1,3 @@
 # my-profile
 
-''' bash
-tes tes
-'''
+# my my
