@@ -1,116 +1,550 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-        <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; connect-src 'self'">
-        <title>Site not found &middot;GitHub Pages</title>
-        <style type="text/css" media="screen">
-            body {
-                background-color: #f1f1f1;
-                margin: 0;
-                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            }
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>My Profile · Diwa Prasetyo</title>
+    <style>
+      :root{
+        --bg: #f3f4f6;
+        --bg-alt:#ffffff;
+        --fg:#111827;
+        --muted:#6b7280;
+        --accent:#4f46e5;
+        --accent-soft:#eef2ff;
+        --border:#e5e7eb;
+        --shadow:0 8px 30px rgba(15,23,42,0.12);
+      }
+      body[data-theme="dark"]{
+        --bg:#020617;
+        --bg-alt:#020617;
+        --fg:#e5e7eb;
+        --muted:#9ca3af;
+        --accent:#6366f1;
+        --accent-soft:rgba(99,102,241,0.08);
+        --border:rgba(148,163,184,0.4);
+        --shadow:0 14px 40px rgba(15,23,42,0.85);
+      }
 
-            .container {
-                margin: 50px auto 40px auto;
-                width: 600px;
-                text-align: center;
-            }
+      html{scroll-behavior:smooth;}
+      body{
+        font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+        margin:0;
+        padding:0;
+        background:
+          radial-gradient(circle at top left, rgba(129,140,248,.22), transparent 55%),
+          radial-gradient(circle at bottom right, rgba(45,212,191,.18), transparent 55%),
+          var(--bg);
+        color:var(--fg);
+        min-height:100vh;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+      }
+      .page-frame{
+        padding:1.5rem;
+        width:100%;
+      }
+      .container{
+        max-width:900px;
+        margin:0 auto;
+        padding:1.75rem 1.8rem 1.6rem;
+        background:radial-gradient(circle at top left, rgba(255,255,255,0.95), rgba(248,250,252,0.96));
+        border-radius:18px;
+        box-shadow:var(--shadow);
+        border:1px solid rgba(148,163,184,0.2);
+        backdrop-filter:blur(12px);
+        position:relative;
+        overflow:hidden;
+      }
+      body[data-theme="dark"] .container{
+        background:radial-gradient(circle at top left, rgba(15,23,42,0.98), rgba(15,23,42,0.96));
+      }
 
-            a {
-                color: #4183c4;
-                text-decoration: none;
-            }
+      .container::before{
+        content:"";
+        position:absolute;
+        inset:0;
+        border-radius:inherit;
+        padding:1px;
+        background:linear-gradient(135deg,rgba(96,165,250,0.8),rgba(129,140,248,0.8),rgba(45,212,191,0.9));
+        -webkit-mask:
+          linear-gradient(#000 0 0) content-box,
+          linear-gradient(#000 0 0);
+        -webkit-mask-composite:xor;
+        mask-composite:exclude;
+        opacity:0.35;
+        pointer-events:none;
+      }
 
-            a:hover {
-                text-decoration: underline;
-            }
+      header{
+        display:flex;
+        gap:1.25rem;
+        align-items:center;
+        position:relative;
+      }
+      .avatar-wrap{
+        position:relative;
+        width:96px;
+        height:96px;
+        flex-shrink:0;
+      }
+      img.avatar{
+        width:100%;
+        height:100%;
+        border-radius:20px;
+        object-fit:cover;
+        display:block;
+        position:relative;
+        z-index:1;
+        box-shadow:0 10px 25px rgba(15,23,42,0.35);
+        transform:translateY(0);
+        transition:transform .3s ease, box-shadow .3s ease;
+      }
+      .avatar-ring{
+        position:absolute;
+        inset:-3px;
+        border-radius:24px;
+        background:conic-gradient(from 180deg, #4f46e5,#22c55e,#0ea5e9,#4f46e5);
+        opacity:.9;
+        filter:blur(.5px);
+        animation:spin 14s linear infinite;
+      }
+      .avatar-glow{
+        position:absolute;
+        inset:auto -15px -18px;
+        height:26px;
+        background:radial-gradient(circle at center, rgba(15,23,42,0.6), transparent 65%);
+        opacity:.85;
+      }
+      .avatar-wrap:hover .avatar{
+        transform:translateY(-4px) scale(1.02);
+        box-shadow:0 18px 40px rgba(15,23,42,0.5);
+      }
 
-            h1 {
-                width: 800px;
-                position: relative;
-                left: -100px;
-                letter-spacing: -1px;
-                line-height: 60px;
-                font-size: 60px;
-                font-weight: 100;
-                margin: 0px 0 50px 0;
-                text-shadow: 0 1px 0 #fff;
-            }
+      @keyframes spin{
+        to{transform:rotate(360deg);}
+      }
 
-            p {
-                color: rgba(0, 0, 0, 0.5);
-                margin: 20px 0;
-                line-height: 1.6;
-            }
+      h1{
+        margin:.15rem 0 .1rem;
+        font-size:1.65rem;
+        letter-spacing:.02em;
+      }
+      .role{
+        font-size:.95rem;
+        color:var(--muted);
+      }
+      .greeting{
+        margin:.3rem 0 0;
+        font-size:.9rem;
+        color:var(--accent);
+        font-weight:500;
+      }
 
-            ul {
-                list-style: none;
-                margin: 25px 0;
-                padding: 0;
-            }
+      .top-row{
+        display:flex;
+        align-items:flex-start;
+        justify-content:space-between;
+        gap:.5rem;
+      }
+      .links{
+        display:flex;
+        gap:.75rem;
+        margin-top:.55rem;
+        flex-wrap:wrap;
+      }
+      .pill-link{
+        position:relative;
+        border-radius:999px;
+        padding:.32rem .9rem;
+        font-size:.85rem;
+        border:1px solid rgba(148,163,184,0.6);
+        display:inline-flex;
+        align-items:center;
+        gap:.35rem;
+        text-decoration:none;
+        color:var(--fg);
+        overflow:hidden;
+        cursor:pointer;
+        transition:background .2s ease,border-color .2s ease,transform .2s ease,box-shadow .2s ease;
+        box-shadow:0 1px 3px rgba(15,23,42,0.08);
+        background:rgba(248,250,252,0.9);
+      }
+      body[data-theme="dark"] .pill-link{
+        background:rgba(15,23,42,0.9);
+      }
+      .pill-link span.icon{
+        font-size:1rem;
+      }
+      .pill-link::after{
+        content:"";
+        position:absolute;
+        inset:0;
+        background:radial-gradient(circle at 0 0,rgba(96,165,250,.6),transparent 55%);
+        opacity:0;
+        transition:opacity .25s ease;
+      }
+      .pill-link:hover{
+        background:rgba(239,246,255,1);
+        border-color:rgba(129,140,248,0.9);
+        transform:translateY(-1px);
+        box-shadow:0 6px 18px rgba(148,163,184,0.35);
+      }
+      body[data-theme="dark"] .pill-link:hover{
+        background:rgba(30,64,175,0.7);
+      }
+      .pill-link:hover::after{
+        opacity:1;
+      }
 
-            li {
-                display: table-cell;
-                font-weight: bold;
-                width: 1%;
-            }
+      .icon-button{
+        border-radius:999px;
+        border:1px solid rgba(148,163,184,0.7);
+        padding:.35rem .6rem;
+        background:rgba(248,250,252,0.9);
+        color:var(--muted);
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        font-size:1rem;
+        cursor:pointer;
+        transition:background .2s ease, transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+        box-shadow:0 2px 7px rgba(15,23,42,0.18);
+      }
+      body[data-theme="dark"] .icon-button{
+        background:rgba(15,23,42,0.9);
+      }
+      .icon-button:hover{
+        transform:translateY(-1px);
+        border-color:var(--accent);
+        box-shadow:0 8px 22px rgba(15,23,42,0.35);
+      }
 
-            .logo {
-                display: inline-block;
-                margin-top: 35px;
-            }
+      .skills{
+        display:flex;
+        flex-wrap:wrap;
+        gap:.45rem;
+        margin-top:.6rem;
+      }
+      .skill{
+        background:var(--accent-soft);
+        padding:.25rem .65rem;
+        border-radius:999px;
+        font-size:.78rem;
+        color:var(--accent);
+        border:1px solid rgba(129,140,248,0.45);
+        letter-spacing:.02em;
+        text-transform:uppercase;
+        opacity:0;
+        transform:translateY(6px);
+        transition:transform .35s cubic-bezier(0.22,1,0.36,1),opacity .35s ease,box-shadow .2s ease;
+        box-shadow:0 4px 10px rgba(129,140,248,0.18);
+      }
+      .skill.skill-pop{
+        opacity:1;
+        transform:translateY(0);
+      }
+      .skill:hover{
+        box-shadow:0 8px 20px rgba(79,70,229,0.35);
+        transform:translateY(-1px) scale(1.03);
+      }
 
-            .logo-img-2x {
-                display: none;
-            }
+      section{
+        margin-top:1.35rem;
+        padding-top:1rem;
+        border-top:1px dashed rgba(148,163,184,0.6);
+      }
+      section:first-of-type{
+        margin-top:1.2rem;
+      }
+      h2{
+        margin:0 0 .35rem;
+        font-size:1.05rem;
+        letter-spacing:.06em;
+        text-transform:uppercase;
+        color:var(--muted);
+      }
+      p{
+        margin:.2rem 0 .4rem;
+        font-size:.94rem;
+        line-height:1.5;
+        color:var(--fg);
+      }
+      .muted{
+        color:var(--muted);
+      }
 
-            @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and ( min--moz-device-pixel-ratio: 2), only screen and ( -o-min-device-pixel-ratio: 2/1), only screen and ( min-device-pixel-ratio: 2), only screen and ( min-resolution: 192dpi), only screen and ( min-resolution: 2dppx) {
-                .logo-img-1x {
-                    display: none;
-                }
+      ul{
+        margin:.2rem 0 .4rem;
+        padding-left:1.1rem;
+      }
+      li{
+        margin-bottom:.2rem;
+        font-size:.93rem;
+      }
+      strong{
+        font-weight:600;
+      }
 
-                .logo-img-2x {
-                    display: inline-block;
-                }
-            }
+      a{
+        color:inherit;
+      }
+      a.email-link{
+        position:relative;
+        text-decoration:none;
+        padding-bottom:1px;
+      }
+      a.email-link::after{
+        content:"";
+        position:absolute;
+        left:0;
+        bottom:0;
+        width:100%;
+        height:1px;
+        background:linear-gradient(to right, var(--accent), #22c55e);
+        transform-origin:left;
+        transform:scaleX(.25);
+        opacity:.7;
+        transition:transform .23s ease, opacity .23s ease;
+      }
+      a.email-link:hover::after{
+        transform:scaleX(1);
+        opacity:1;
+      }
 
-            #suggestions {
-                margin-top: 35px;
-                color: #ccc;
-            }
+      footer{
+        margin-top:1.65rem;
+        font-size:.82rem;
+        color:var(--muted);
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:.75rem;
+        flex-wrap:wrap;
+      }
+      .footer-heart{
+        display:inline-block;
+        animation:pulse 1.4s infinite;
+      }
+      @keyframes pulse{
+        0%,100%{transform:scale(1);}
+        50%{transform:scale(1.15);}
+      }
 
-            #suggestions a {
-                color: #666666;
-                font-weight: 200;
-                font-size: 14px;
-                margin: 0 10px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <h1>404</h1>
-            <p>
-                <strong>There isn't a GitHub Pages site here.</strong>
-            </p>
-            <p>
-                If you're trying to publish one,
-        <a href="https://help.github.com/pages/">read the full documentation</a>
-                to learn how to set up <strong>GitHub Pages</strong>
-                for your repository, organization, or user account.
-      
-            </p>
-            <div id="suggestions">
-                <a href="https://githubstatus.com">GitHub Status</a>
-                &mdash;<a href="https://twitter.com/githubstatus">@githubstatus</a>
+      /* scroll reveal */
+      .fade-section{
+        opacity:0;
+        transform:translateY(14px);
+        transition:opacity .4s ease, transform .4s cubic-bezier(0.22,1,0.36,1);
+      }
+      .fade-section.visible{
+        opacity:1;
+        transform:translateY(0);
+      }
+
+      @media (max-width:640px){
+        .container{
+          padding:1.35rem 1.1rem 1.1rem;
+          border-radius:16px;
+        }
+        header{
+          flex-direction:row;
+          align-items:flex-start;
+        }
+        .avatar-wrap{
+          width:82px;
+          height:82px;
+        }
+        h1{
+          font-size:1.4rem;
+        }
+        .page-frame{
+          padding:1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-frame">
+      <div class="container">
+        <header>
+          <div class="avatar-wrap">
+            <div class="avatar-ring"></div>
+            <img
+              class="avatar"
+              src="https://avatars.githubusercontent.com/u/9919?s=200&v=4"
+              alt="avatar"
+            />
+            <div class="avatar-glow"></div>
+          </div>
+          <div style="flex:1;">
+            <div class="top-row">
+              <div>
+                <h1>Diwa Prasetyo</h1>
+                <div class="role">Software Engineer · FAST API · Python · Cloud</div>
+                <p id="greeting" class="greeting"></p>
+              </div>
+              <button id="themeToggle" class="icon-button" aria-label="Toggle dark mode">
+                🌙
+              </button>
             </div>
-            <a href="/" class="logo logo-img-1x">
-                <img width="32" height="32" title="" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpFMTZCRDY3REIzRjAxMUUyQUQzREIxQzRENUFFNUM5NiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpFMTZCRDY3RUIzRjAxMUUyQUQzREIxQzRENUFFNUM5NiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkUxNkJENjdCQjNGMDExRTJBRDNEQjFDNEQ1QUU1Qzk2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkUxNkJENjdDQjNGMDExRTJBRDNEQjFDNEQ1QUU1Qzk2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+SM9MCAAAA+5JREFUeNrEV11Ik1EY3s4+ddOp29Q5b0opCgKFsoKoi5Kg6CIhuwi6zLJLoYLopq4qsKKgi4i6CYIoU/q5iDAKs6syoS76IRWtyJ+p7cdt7sf1PGOD+e0c3dygAx/67ZzzPM95/877GYdHRg3ZjMXFxepQKNS6sLCwJxqNNuFpiMfjVs4ZjUa/pmmjeD6VlJS8NpvNT4QQ7mxwjSsJiEQim/1+/9lgMHgIr5ohuxG1WCw9Vqv1clFR0dCqBODElV6v90ogEDjGdYbVjXhpaendioqK07CIR7ZAqE49PT09BPL2PMgTByQGsYiZlQD4uMXtdr+JxWINhgINYhGT2MsKgMrm2dnZXgRXhaHAg5jEJodUAHxux4LudHJE9RdEdA+i3Juz7bGHe4mhE9FNrgwBCLirMFV9Okh5eflFh8PR5nK5nDabrR2BNJlKO0T35+Li4n4+/J+/JQCxhmu5h3uJoXNHPbmWZAHMshWB8l5/ipqammaAf0zPDDx1ONV3vurdidqwAQL+pEc8sLcAe1CCvQ3YHxIW8Pl85xSWNC1hADDIv0rIE/o4J0k3kww4xSlwIhcq3EFFOm7KN/hUGOQkt0CFa5WpNJlMvxBEz/IVQAxg/ZRZl9wiHA63yDYieM7DnLP5CiAGsC7I5sgtYKJGWe2A8seFqgFJrJjEPY1Cn3pJ8/9W1e5VWsFDTEmFrBcoDhZJEQkXuhICMyKpjhahqN21hRYATKfUOlDmkygrR4o4C0VOLGJKrOITKB4jijzdXygBKixyC5TDQdnk/Pz8qRw6oOWGlsTKGOQW6OH6FBWsyePxdOXLTgxiyebILZCjz+GLgMIKnXNzc49YMlcRdHXcSwxFVgTInQhC9G33UhNoJLuqq6t345p9y3eUy8OTk5PjAHuI9uo4b07FBaOhsu0A4Unc+T1TU1Nj3KsSSE5yJ65jqF2DDd8QqWYmAZrIM2VlZTdnZmb6AbpdV9V6ec9znf5Q7HjYumdRE0JOp3MjitO4SFa+cZz8Umqe3TCbSLvdfkR/kWDdNQl5InuTcysOcpFT35ZrbBxx4p3JAHlZVVW1D/634VRt+FvLBgK/v5LV9WS+10xMTEwtRw7XvqOL+e2Q8V3AYIOIAXQ26/heWVnZCVfcyKHg2CBgTpmPmjYM8l24GyaUHyaIh7XwfR9ErE8qHoDfn2LTNAVC0HX6MFcBIP8Bi+6F6cdW/DICkANRfx99fEYFQ7Nph5i/uQiA214gno7K+guhaiKg9gC62+M8eR7XsBsYJ4ilam60Fb7r7uAj8wFyuwM1oIOWgfmDy6RXEEQzJMPe23DXrVS7rtyD3Df8z/FPgAEAzWU5Ku59ZAUAAAAASUVORK5CYII=">
+            <div class="links" style="margin-top:.5rem">
+              <a
+                class="pill-link"
+                href="https://github.com/DiwaPrasetyo02"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span class="icon">🐙</span>
+                <span>GitHub</span>
+              </a>
+              <a
+                class="pill-link"
+                href="https://www.linkedin.com/in/diwa-prasetyo"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span class="icon">💼</span>
+                <span>LinkedIn</span>
+              </a>
+            </div>
+            <div class="skills" aria-hidden="true">
+              <span class="skill">.NET</span>
+              <span class="skill">Golang</span>
+              <span class="skill">Docker</span>
+              <span class="skill">AWS</span>
+            </div>
+          </div>
+        </header>
+
+        <section class="fade-section" data-animate>
+          <h2>About</h2>
+          <p>
+            Passionate software engineer building reliable backend systems. I enjoy clean
+            architecture, distributed systems, and mentoring peers.
+          </p>
+        </section>
+
+        <section class="fade-section" data-animate>
+          <h2>Education</h2>
+          <p>Universitas Pendidikan Indonesia — S.Kom, Computer Science</p>
+        </section>
+
+        <section class="fade-section" data-animate>
+          <h2>Projects</h2>
+          <ul>
+            <li>
+              <strong>Good Night Steph</strong> — Sleep tracking API
+              <span class="muted">(Rails, Elasticsearch)</span>
+            </li>
+            <li>
+              <strong>Pool Simulator</strong> — Face recognition
+              <span class="muted">(Dotnet, Emgu.CV)</span>
+            </li>
+          </ul>
+        </section>
+
+        <section class="fade-section" data-animate>
+          <h2>Contact</h2>
+          <p>
+            Email:
+            <a class="email-link" href="mailto:diwapraset02@gmail.com">
+              diwapraset02@gmail.com
             </a>
-            <a href="/" class="logo logo-img-2x">
-                <img width="32" height="32" title="" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpEQUM1QkUxRUI0MUMxMUUyQUQzREIxQzRENUFFNUM5NiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpEQUM1QkUxRkI0MUMxMUUyQUQzREIxQzRENUFFNUM5NiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkUxNkJENjdGQjNGMDExRTJBRDNEQjFDNEQ1QUU1Qzk2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkUxNkJENjgwQjNGMDExRTJBRDNEQjFDNEQ1QUU1Qzk2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+hfPRaQAAB6lJREFUeNrsW2mM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">
-            </a>
-        </div>
-    </body>
+          </p>
+        </section>
+
+        <footer class="fade-section" data-animate>
+          <span>Built with <span class="footer-heart">♥</span> · Published via GitHub Pages</span>
+          <span class="muted" id="lastUpdated"></span>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const body = document.body;
+        const themeToggle = document.getElementById("themeToggle");
+        const greetingEl = document.getElementById("greeting");
+        const lastUpdatedEl = document.getElementById("lastUpdated");
+        const sections = document.querySelectorAll("[data-animate]");
+        const skills = document.querySelectorAll(".skill");
+
+        // ----- Greeting based on time -----
+        (function setGreeting() {
+          const hour = new Date().getHours();
+          let text = "Have a nice day building cool things.";
+          if (hour >= 5 && hour < 11) text = "Good morning — perfect time to ship features.";
+          else if (hour >= 11 && hour < 16) text = "Good afternoon — keep the commits flowing.";
+          else if (hour >= 16 && hour < 21) text = "Good evening — great time to refactor cleanly.";
+          else text = "Burning the midnight oil — don’t forget to rest.";
+          greetingEl.textContent = text;
+        })();
+
+        // ----- Theme toggle (light / dark) -----
+        (function initTheme() {
+          const stored = window.localStorage.getItem("theme");
+          if (stored === "dark") {
+            body.setAttribute("data-theme", "dark");
+          }
+          updateThemeIcon();
+
+          themeToggle.addEventListener("click", function () {
+            const isDark = body.getAttribute("data-theme") === "dark";
+            if (isDark) {
+              body.removeAttribute("data-theme");
+              window.localStorage.setItem("theme", "light");
+            } else {
+              body.setAttribute("data-theme", "dark");
+              window.localStorage.setItem("theme", "dark");
+            }
+            updateThemeIcon();
+          });
+
+          function updateThemeIcon() {
+            const isDark = body.getAttribute("data-theme") === "dark";
+            themeToggle.textContent = isDark ? "☀️" : "🌙";
+          }
+        })();
+
+        // ----- Reveal sections on scroll -----
+        if ("IntersectionObserver" in window) {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("visible");
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { rootMargin: "0px 0px -15% 0px", threshold: 0.15 }
+          );
+          sections.forEach((section) => observer.observe(section));
+        } else {
+          // fallback if IntersectionObserver not available
+          sections.forEach((section) => section.classList.add("visible"));
+        }
+
+        // ----- Staggered skills animation -----
+        skills.forEach((chip, index) => {
+          const delay = 100 + index * 80; // ms
+          setTimeout(() => {
+            chip.classList.add("skill-pop");
+          }, delay);
+        });
+
+        // ----- Last updated footer text -----
+        (function setLastUpdated() {
+          if (!lastUpdatedEl) return;
+          const updated = document.lastModified;
+          if (!updated) return;
+          const date = new Date(updated);
+          if (isNaN(date.getTime())) return;
+          const options = { year: "numeric", month: "short", day: "numeric" };
+          lastUpdatedEl.textContent = "Last updated · " + date.toLocaleDateString(undefined, options);
+        })();
+      });
+    </script>
+  </body>
 </html>
