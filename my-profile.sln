@@ -1,0 +1,43 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "c-sharp", "c-sharp", "{8DD2837E-F460-30ED-8E5F-5B31E8047072}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PalindromChecker", "c-sharp\PalindromChecker\PalindromChecker.csproj", "{8F56CEE4-862F-0049-461D-F6E9256B2C79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SumEvenNumber", "c-sharp\SumEvenNumber\SumEvenNumber.csproj", "{81A0EBAB-9803-B860-BCC4-822FABAA9039}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManagerCLI", "c-sharp\TaskManagerCLI\TaskManagerCLI.csproj", "{1AA04997-120E-B8E9-B329-E2B2214705D8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F56CEE4-862F-0049-461D-F6E9256B2C79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F56CEE4-862F-0049-461D-F6E9256B2C79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F56CEE4-862F-0049-461D-F6E9256B2C79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F56CEE4-862F-0049-461D-F6E9256B2C79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81A0EBAB-9803-B860-BCC4-822FABAA9039}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81A0EBAB-9803-B860-BCC4-822FABAA9039}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81A0EBAB-9803-B860-BCC4-822FABAA9039}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81A0EBAB-9803-B860-BCC4-822FABAA9039}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AA04997-120E-B8E9-B329-E2B2214705D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AA04997-120E-B8E9-B329-E2B2214705D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AA04997-120E-B8E9-B329-E2B2214705D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AA04997-120E-B8E9-B329-E2B2214705D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8F56CEE4-862F-0049-461D-F6E9256B2C79} = {8DD2837E-F460-30ED-8E5F-5B31E8047072}
+		{81A0EBAB-9803-B860-BCC4-822FABAA9039} = {8DD2837E-F460-30ED-8E5F-5B31E8047072}
+		{1AA04997-120E-B8E9-B329-E2B2214705D8} = {8DD2837E-F460-30ED-8E5F-5B31E8047072}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6CDB5EF0-E36D-46AE-A310-F84013FACE83}
+	EndGlobalSection
+EndGlobal
