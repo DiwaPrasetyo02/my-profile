@@ -11,12 +11,12 @@ const InputName: React.FC = () => {
 
   return (
     <div style={{ padding: '20px', border: '1px solid #ccc', borderRadius: '8px', margin: '20px 0' }}>
-      <h2>Input Name</h2>
+      <h2>Input Teks disini...</h2>
       <input
         type="text"
         value={inputValue}
         onChange={handleChange}
-        placeholder="Ketik nama di sini..."
+        placeholder="Ketik teks di sini..."
         style={{
           padding: '10px',
           fontSize: '16px',
